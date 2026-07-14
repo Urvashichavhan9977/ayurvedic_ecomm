@@ -1,0 +1,282 @@
+.footer {
+  background: #0c1e13;
+  color: rgba(255,255,255,.7);
+  padding: 4rem 0 0;
+}
+
+.foot-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.2fr;
+  gap: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+@media (max-width: 1100px) {
+  .foot-grid { grid-template-columns: 2fr 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .foot-grid { grid-template-columns: 1fr; }
+}
+
+.foot-contact-list li {
+  line-height: 1.6;
+  margin-bottom: .6rem;
+  color: rgba(255,255,255,.65);
+}
+.foot-contact-list a {
+  color: rgba(255,255,255,.65);
+  text-decoration: none;
+}
+.foot-contact-list a:hover {
+  color: #fff;
+}
+
+/* ─── Footer column title (button wrapper around h4) ───
+   Desktop: looks/behaves exactly like the old plain <h4>.
+   Mobile: becomes a tappable accordion header. */
+.foot-col-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  cursor: default;
+  text-align: left;
+  font: inherit;
+}
+
+.foot-col-title h4 {
+  margin: 0;
+}
+
+.foot-col-chevron {
+  display: none;
+  flex-shrink: 0;
+  color: rgba(255,255,255,.5);
+  transition: transform .25s ease;
+}
+
+/* Links wrapper — on desktop this is always fully visible */
+.foot-col-links {
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .foot-col {
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    padding-bottom: .85rem;
+  }
+
+  .foot-col-title {
+    cursor: pointer;
+    padding: .35rem 0;
+  }
+
+  .foot-col-chevron {
+    display: block;
+  }
+
+  .foot-col.is-open .foot-col-chevron {
+    transform: rotate(180deg);
+    color: var(--gold2);
+  }
+
+  /* Collapsed by default, slides open on tap */
+  .foot-col-links {
+    max-height: 0;
+    opacity: 0;
+    transition: max-height .35s ease, opacity .25s ease, margin-top .25s ease;
+    margin-top: 0;
+  }
+
+  .foot-col.is-open .foot-col-links {
+    max-height: 320px;
+    opacity: 1;
+    margin-top: .5rem;
+  }
+}
+
+.foot-logo {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: var(--gold);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: .75rem;
+}
+
+.foot-logo span { color: var(--gold2); }
+
+.foot-brand p {
+  font-size: .83rem;
+  line-height: 1.65;
+  max-width: 260px;
+  margin-bottom: 1.25rem;
+}
+
+.socials {
+  display: flex;
+  gap: .5rem;
+}
+
+.soc-link {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.12);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.65);
+  transition: all .2s;
+  text-decoration: none;
+}
+
+.soc-link:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
+}
+
+.footer h4 {
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.footer ul {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  list-style: none;
+}
+
+.footer ul li a {
+  color: rgba(255,255,255,.55);
+  font-size: .83rem;
+  transition: color .2s;
+  text-decoration: none;
+}
+
+.footer ul li a:hover {
+  color: var(--gold2);
+}
+
+.foot-pay {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.foot-pay > span {
+  font-size: .78rem;
+  color: rgba(255,255,255,.4);
+}
+
+.pay-icons {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.pay-badge {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.65);
+  font-size: .68rem;
+  font-weight: 700;
+  padding: .3em .8em;
+  border-radius: 6px;
+}
+
+.foot-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 0;
+  font-size: .78rem;
+  color: rgba(255,255,255,.35);
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.foot-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.foot-links a {
+  color: rgba(255,255,255,.35);
+  transition: color .2s;
+  text-decoration: none;
+}
+
+.foot-links a:hover {
+  color: var(--gold2);
+}
+
+/* Floating decorative leaves */
+.footer-leaves {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.footer-leaf {
+  position: absolute;
+  color: rgba(167, 224, 179, 0.25);
+  filter: blur(0.3px);
+}
+
+.footer-leaf.leaf-1 {
+  top: 10%; left: 6%;
+  animation: floatDrift 7s ease-in-out infinite;
+}
+.footer-leaf.leaf-2 {
+  top: 65%; left: 12%;
+  animation: floatDrift 9s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+.footer-leaf.leaf-3 {
+  top: 20%; right: 8%;
+  animation: floatDrift 8s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+.footer-leaf.leaf-4 {
+  top: 70%; right: 14%;
+  animation: floatDrift 10s ease-in-out infinite;
+  animation-delay: 2s;
+}
+.footer-leaf.leaf-5 {
+  top: 40%; left: 45%;
+  animation: floatDrift 11s ease-in-out infinite;
+  animation-delay: 3s;
+  opacity: 0.5;
+}
+
+@keyframes floatDrift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(8px, -14px) rotate(8deg); }
+  50%  { transform: translate(-6px, -6px) rotate(-6deg); }
+  75%  { transform: translate(10px, 6px) rotate(5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.footer {
+  position: relative;
+  overflow: hidden;
+}
+
+.footer > .container {
+  position: relative;
+  z-index: 2;
+}

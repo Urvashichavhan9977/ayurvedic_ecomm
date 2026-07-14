@@ -1,0 +1,101 @@
+.testi-section {
+  background: linear-gradient(135deg, #0d2118 0%, #1a3a28 60%, #112a1c 100%);
+  padding: 4.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.testi-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: .12;
+  pointer-events: none;
+}
+
+.testi-orb.o1 { width: 400px; height: 400px; background: var(--gold); top: -100px; left: -80px; }
+.testi-orb.o2 { width: 300px; height: 300px; background: #4caf50; bottom: -60px; right: 8%; }
+
+/* --- Alignment fix: Swiper doesn't stretch slides to equal height
+   by default, so cards with shorter quotes looked misaligned. --- */
+.testi-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.testi-swiper .swiper-slide,
+.testi-slide {
+  height: auto;
+  display: flex;
+}
+
+.testi-card {
+  background: rgba(255,255,255,.09);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 20px;
+  padding: 1.75rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.testi-stars {
+  color: #e6b422;
+  font-size: 1rem;
+  margin-bottom: .8rem;
+  letter-spacing: 2px;
+}
+
+.testi-quote {
+  color: rgba(255,255,255,.88);
+  font-size: .88rem;
+  line-height: 1.65;
+  font-style: italic;
+  flex: 1;
+  margin: 0 0 1.2rem;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  margin-top: auto;
+}
+
+.testi-av {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--green));
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: .82rem;
+  flex-shrink: 0;
+}
+
+.testi-author strong {
+  display: block;
+  color: #fff;
+  font-size: .88rem;
+}
+
+.testi-author small {
+  color: rgba(255,255,255,.5);
+  font-size: .75rem;
+}
+
+.testi-swiper .swiper-button-prev,
+.testi-swiper .swiper-button-next {
+  background: rgba(255,255,255,.12) !important;
+  color: #fff !important;
+}
+
+.testi-swiper .swiper-pagination-bullet {
+  background: rgba(255,255,255,.4);
+}
+
+.testi-swiper .swiper-pagination-bullet-active {
+  background: var(--gold2);
+}

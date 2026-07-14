@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ===================================================
+   AMRITA AYURVEDA — CHECKOUT (PREMIUM REDESIGN)
+=================================================== */
+
+:root {
+  --ayur-green: #1B5E20;
+  --ayur-green-light: #E8F5E9;
+  --ayur-green-mid: #2E7D32;
+  --ayur-gold: #D4AF37;
+  --ayur-white: #FFFFFF;
+  --ayur-muted: #6b7d70;
+  --ayur-radius: 18px;
+  --ayur-shadow: 0 10px 30px rgba(27, 94, 32, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+.ayur-checkout { font-family: 'Inter', sans-serif; background: linear-gradient(180deg, #F6FBF7 0%, #ffffff 40%); overflow-x: hidden; }
+.ayur-checkout h1, .ayur-checkout h2, .ayur-checkout h3, .ayur-checkout h4 { font-family: 'Playfair Display', serif; }
+
+/* ============ HERO BANNER ============ */
+.ayur-hero {
+  background: linear-gradient(120deg, var(--ayur-green) 0%, var(--ayur-green-mid) 100%);
+  padding: 3rem 0 3.5rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.ayur-hero-inner {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+.ayur-eyebrow {
+  display: inline-block;
+  color: var(--ayur-gold);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: .75rem;
+  margin-bottom: .6rem;
+}
+.ayur-hero-text h1 {
+  color: #fff;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: .6rem;
+  line-height: 1.15;
+}
+.ayur-hero-text p {
+  color: #d9efdd;
+  font-size: 1.02rem;
+  margin-bottom: 1.4rem;
+  max-width: 480px;
+}
+.btn-outline-gold {
+  display: inline-block;
+  border: 1.5px solid var(--ayur-gold);
+  color: var(--ayur-gold);
+  background: transparent;
+  padding: .7rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: .85rem;
+  transition: all .25s ease;
+}
+.btn-outline-gold:hover { background: var(--ayur-gold); color: #1B5E20; transform: translateY(-2px); }
+
+.ayur-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .9rem 1.4rem;
+  margin-top: 1.8rem;
+}
+.ayur-feature {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  color: #eafbee;
+  font-size: .82rem;
+  font-weight: 600;
+}
+.ayur-feature svg { flex-shrink: 0; color: var(--ayur-gold); }
+
+.ayur-hero-art { position: relative; height: 220px; }
+.ayur-leaf, .ayur-mortar {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #eafbee;
+  opacity: .9;
+  animation: float 4s ease-in-out infinite;
+}
+.ayur-mortar { color: var(--ayur-gold); }
+.leaf-1 { top: 10%; left: 20%; animation-delay: 0s; }
+.leaf-2 { top: 50%; left: 60%; animation-delay: .6s; }
+.leaf-3 { top: 65%; left: 10%; animation-delay: 1.2s; }
+.ayur-mortar { top: 25%; left: 45%; animation-delay: .3s; }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+@media (max-width: 860px) {
+  .ayur-hero-inner { grid-template-columns: 1fr; }
+  .ayur-hero-art { display: none; }
+}
+
+@media (max-width: 480px) {
+  .ayur-hero { padding: 2rem 0 2.5rem; }
+  .ayur-features { gap: .6rem 1rem; }
+}
+
+/* ============ LAYOUT ============ */
+.checkout-page { padding: 0 0 4rem; width: 100%; }
+
+.checkout-steps {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  justify-content: center;
+}
+.checkout-step {
+  flex: 1;
+  min-width: 130px;
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .85rem 1rem;
+  border-radius: 14px;
+  background: var(--ayur-green-light);
+  color: var(--ayur-muted);
+  font-size: .85rem;
+  font-weight: 700;
+  transition: all .35s ease;
+  border: 1.5px solid transparent;
+}
+.step-num {
+  display: flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #fff; color: var(--ayur-muted);
+  font-size: .75rem; flex-shrink: 0; transition: all .3s ease;
+}
+.checkout-step.active {
+  background: var(--ayur-green);
+  color: #fff;
+  border-color: var(--ayur-gold);
+  box-shadow: 0 6px 18px rgba(27,94,32,.25);
+  transform: translateY(-2px);
+}
+.checkout-step.active .step-num { background: var(--ayur-gold); color: #1B5E20; }
+.checkout-step.done { background: var(--ayur-green-mid); color: #fff; }
+.checkout-step.done .step-num { background: #fff; color: var(--ayur-green-mid); }
+
+@media (max-width: 600px) {
+  .checkout-steps { gap: .5rem; margin-bottom: 1.5rem; }
+  .checkout-step { min-width: 0; flex: 1 1 45%; font-size: .75rem; padding: .65rem .7rem; }
+  .step-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
+
+.checkout-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem; align-items: start; }
+.login-grid { grid-template-columns: 1.3fr 1fr; }
+@media (max-width: 860px) {
+  .checkout-grid, .login-grid { grid-template-columns: 1fr; }
+}
+
+/* ============ CARDS / GLASS ============ */
+.checkout-card, .checkout-summary-box {
+  background: var(--ayur-white);
+  border-radius: var(--ayur-radius);
+  box-shadow: var(--ayur-shadow);
+  padding: 2rem;
+  border: 1px solid #eef5ef;
+  width: 100%;
+}
+.glass-card {
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,.92);
+}
+.checkout-card h3 { color: var(--ayur-green); font-size: 1.2rem; font-weight: 800; margin-bottom: 1.4rem; }
+.card-head-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .6rem; margin-bottom: .8rem; }
+.card-head-row h3 { margin-bottom: 0; }
+
+.login-side { display: flex; flex-direction: column; gap: 1.5rem; }
+.new-customer-card h4 { color: var(--ayur-green); font-weight: 800; margin-bottom: 1rem; }
+.benefit-list { list-style: none; padding: 0; margin: 0 0 1.2rem; display: flex; flex-direction: column; gap: .6rem; }
+.benefit-list li { display: flex; align-items: center; gap: .5rem; font-size: .88rem; color: var(--ayur-muted); font-weight: 600; }
+.benefit-list li svg { color: var(--ayur-green); flex-shrink: 0; }
+
+.sticky-summary { position: sticky; top: 90px; }
+@media (max-width: 860px) { .sticky-summary { position: static; top: unset; } }
+
+.checkout-summary-box h4 { color: var(--ayur-green); font-weight: 800; margin-bottom: 1rem; font-size: 1.05rem; }
+
+.summary-items-scroll { max-height: 220px; overflow-y: auto; padding-right: 4px; margin-bottom: .4rem; }
+.summary-items-scroll::-webkit-scrollbar { width: 5px; }
+.summary-items-scroll::-webkit-scrollbar-thumb { background: #d4e8da; border-radius: 10px; }
+
+.checkout-mini-item { display: flex; justify-content: space-between; font-size: .87rem; color: var(--ayur-muted); margin-bottom: .65rem; gap: .5rem; flex-wrap: wrap; }
+.checkout-mini-item span:first-child { flex: 1; min-width: 0; }
+.mini-item-name { overflow-wrap: anywhere; }
+.total-row { border-top: 1.5px dashed #cfe6d4; padding-top: .8rem; margin-top: .4rem; font-weight: 800; color: var(--ayur-green); font-size: .98rem; }
+
+.trust-badges { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.3rem; padding-top: 1rem; border-top: 1px solid #eef5ef; font-size: .75rem; color: var(--ayur-muted); font-weight: 600; }
+.trust-badges span { display: inline-flex; align-items: center; gap: .35rem; }
+.trust-badges svg { color: var(--ayur-green); flex-shrink: 0; }
+
+/* ============ FORM FIELDS ============ */
+.checkout-card .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 560px) { .checkout-card .form-row { grid-template-columns: 1fr; } }
+.checkout-card .field { margin-bottom: 1.15rem; min-width: 0; }
+.checkout-card .field label { display: block; font-size: .8rem; font-weight: 700; color: var(--ayur-green); margin-bottom: .4rem; }
+.checkout-card .field input {
+  width: 100%; padding: .75rem .95rem; border: 1.5px solid #d4e8da; border-radius: 12px;
+  font-size: .9rem; font-family: inherit; outline: none; transition: all .2s ease; background: #fafdfb;
+}
+.checkout-card .field input:focus { border-color: var(--ayur-green); background: #fff; box-shadow: 0 0 0 3px rgba(27,94,32,.08); }
+
+.forgot-link { display: inline-block; font-size: .8rem; color: var(--ayur-green-mid); font-weight: 600; margin-bottom: .3rem; }
+
+.addr-type-row { display: flex; gap: .7rem; flex-wrap: wrap; }
+.addr-type-btn {
+  flex: 1 1 100px; display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  padding: .65rem; border-radius: 10px; border: 1.5px solid #d4e8da;
+  background: #fafdfb; font-weight: 700; font-size: .85rem; color: var(--ayur-muted); cursor: pointer; transition: all .2s ease;
+}
+.addr-type-btn.selected { background: var(--ayur-green); color: #fff; border-color: var(--ayur-green); }
+
+.checkbox-row { display: flex; align-items: center; gap: .55rem; font-size: .85rem; color: var(--ayur-muted); font-weight: 600; margin-bottom: 1.4rem; cursor: pointer; }
+
+/* ============ SOCIAL / DIVIDER ============ */
+.divider { display: flex; align-items: center; text-align: center; margin: 1.4rem 0; color: var(--ayur-muted); font-size: .78rem; }
+.divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid #e4eee6; }
+.divider span { padding: 0 .8rem; }
+.social-row { display: flex; gap: .7rem; flex-wrap: wrap; }
+.btn-social { flex: 1 1 130px; padding: .65rem; border-radius: 10px; font-weight: 700; font-size: .85rem; border: 1.5px solid #d4e8da; background: #fff; cursor: pointer; transition: all .2s ease; }
+.btn-social:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,0,0,.06); }
+.btn-text { background: none; border: none; color: var(--ayur-green-mid); font-weight: 700; cursor: pointer; font-size: .85rem; }
+.btn-text-sm {
+  display: inline-flex; align-items: center; gap: .35rem;
+  background: none; border: 1.5px solid #d4e8da; border-radius: 999px; padding: .4rem .9rem;
+  font-size: .78rem; font-weight: 700; color: var(--ayur-green-mid); cursor: pointer;
+}
+
+/* ============ PAYMENT ============ */
+.payment-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin-bottom: 1.5rem; }
+@media (max-width: 600px) { .payment-options { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 360px) { .payment-options { grid-template-columns: 1fr; } }
+.payment-opt {
+  border: 1.5px solid #d4e8da; border-radius: 14px; padding: 1rem .6rem; text-align: center;
+  font-size: .82rem; font-weight: 700; color: var(--ayur-green); cursor: pointer; transition: all .22s ease;
+  display: flex; flex-direction: column; align-items: center; gap: .4rem; background: #fafdfb;
+}
+.payment-icon { display: flex; align-items: center; justify-content: center; }
+.payment-opt:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(27,94,32,.1); }
+.payment-opt.selected { background: var(--ayur-green); color: #fff; border-color: var(--ayur-gold); box-shadow: 0 8px 20px rgba(27,94,32,.25); }
+
+.security-badge {
+  display: flex; align-items: center; gap: .5rem; font-size: .8rem; color: var(--ayur-muted);
+  background: #fafdfb; border: 1px dashed #d4e8da; border-radius: 10px; padding: .65rem .9rem; margin-bottom: 1.2rem; font-weight: 600;
+}
+.security-badge svg { color: var(--ayur-green); flex-shrink: 0; }
+
+/* ============ BUTTONS ============ */
+.btn { display: inline-block; padding: .8rem 1.5rem; border-radius: 12px; font-weight: 700; font-size: .9rem; cursor: pointer; text-align: center; transition: all .25s ease; border: none; text-decoration: none; }
+.btn-green { background: var(--ayur-green); color: #fff; }
+.btn-green:hover { background: var(--ayur-green-mid); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(27,94,32,.3); }
+.btn-gold { background: linear-gradient(120deg, var(--ayur-gold), #e6c869); color: #1B5E20; }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(212,175,55,.35); }
+.btn-outline { background: #fff; color: var(--ayur-green); border: 1.5px solid var(--ayur-green); }
+.btn-outline:hover { background: var(--ayur-green-light); }
+
+.ripple { position: relative; overflow: hidden; }
+.ripple:active::after {
+  content: ''; position: absolute; inset: 0; background: rgba(255,255,255,.35);
+  animation: rippleAnim .5s ease-out;
+}
+@keyframes rippleAnim { from { opacity: 1; } to { opacity: 0; } }
+
+/* ============ SUCCESS PAGE ============ */
+.success-page { text-align: center; padding: 2rem 1rem 4rem; position: relative; }
+.success-icon-wrap { display: flex; justify-content: center; margin-bottom: 1.2rem; }
+.success-icon-circle {
+  width: 90px; height: 90px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--ayur-green), var(--ayur-green-mid));
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 14px 30px rgba(27,94,32,.3);
+  animation: popIn .5s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+.success-page h1 { color: var(--ayur-green); font-size: clamp(1.4rem, 4vw, 1.9rem); margin-bottom: .5rem; }
+.success-sub { color: var(--ayur-muted); margin: 0 auto 2rem; max-width: 460px; }
+
+.order-detail-box { max-width: 480px; margin: 0 auto 2rem; text-align: left; }
+.order-detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem 1.5rem; padding-bottom: 1rem; border-bottom: 1px dashed #cfe6d4; }
+.od-label { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .5px; color: var(--ayur-muted); font-weight: 700; margin-bottom: .2rem; }
+.od-value { display: block; font-size: .92rem; color: var(--ayur-green); font-weight: 800; overflow-wrap: anywhere; }
+
+.success-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+.success-decor { display: flex; align-items: center; justify-content: center; gap: .8rem; margin-top: 2rem; opacity: .7; color: var(--ayur-green); }
+
+/* confetti */
+.confetti { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.confetti-piece {
+  position: absolute; top: -10%; width: 9px; height: 9px; opacity: .85;
+  animation: confettiFall 3.2s linear infinite;
+}
+.c0 { left: 5%; background: var(--ayur-gold); animation-delay: 0s; }
+.c1 { left: 18%; background: var(--ayur-green); animation-delay: .3s; }
+.c2 { left: 32%; background: #e6c869; animation-delay: .6s; }
+.c3 { left: 48%; background: var(--ayur-green-mid); animation-delay: .9s; }
+.c4 { left: 64%; background: var(--ayur-gold); animation-delay: .2s; }
+.c5 { left: 80%; background: var(--ayur-green); animation-delay: .5s; }
+@keyframes confettiFall {
+  0% { transform: translateY(0) rotate(0); opacity: 1; }
+  100% { transform: translateY(420px) rotate(360deg); opacity: 0; }
+}
+
+/* ============ ANIMATIONS ============ */
+.fade-in { animation: fadeInUp .5s ease both; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ============ SMALL SCREEN CARD PADDING ============ */
+@media (max-width: 480px) {
+  .checkout-card, .checkout-summary-box { padding: 1.25rem; }
+  .card-head-row { flex-direction: column; align-items: flex-start; }
+}

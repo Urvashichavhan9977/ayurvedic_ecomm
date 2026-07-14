@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ═══════════════════════════════════
+   SHOP HERO
+═══════════════════════════════════ */
+.shop-hero {
+  background: linear-gradient(135deg, #0d2118 0%, #1a3a28 60%, #112a1c 100%);
+  padding: 3.5rem 0 2.5rem;
+  text-align: center;
+  color: #fff;
+}
+.shop-hero .eyebrow { color: var(--gold2); }
+.shop-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin: .5rem 0; color: #fff; }
+.shop-hero p { color: rgba(255,255,255,.7); max-width: 540px; margin: 0 auto; font-size: .95rem; }
+
+/* ═══════════════════════════════════
+   LAYOUT
+═══════════════════════════════════ */
+.shop-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+  align-items: start;
+  padding: 2.5rem 0 4rem;
+}
+@media (max-width: 900px) {
+  .shop-layout { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════ */
+.shop-sidebar {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  position: sticky;
+  top: 90px;
+}
+@media (max-width: 900px) {
+  .shop-sidebar { position: static; }
+}
+.shop-sidebar h3 {
+  font-size: .85rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--green); margin-bottom: .9rem;
+}
+.shop-sidebar h3:not(:first-child) { margin-top: 1.5rem; }
+.shop-cat-list { display: flex; flex-direction: column; gap: .55rem; }
+.shop-cat-btn {
+  display: flex; align-items: center; justify-content: space-between;
+  background: none; border: none; text-align: left; cursor: pointer;
+  font-size: .85rem; color: var(--muted); padding: .35rem 0; font-weight: 600;
+  transition: color .2s;
+}
+.shop-cat-btn:hover, .shop-cat-btn.active { color: var(--green); }
+.shop-cat-btn.active { font-weight: 800; }
+.shop-cat-btn span.count { color: #aaa; font-weight: 600; font-size: .75rem; }
+
+.shop-price-range { display: flex; flex-direction: column; gap: .6rem; }
+.shop-price-range input[type="range"] { width: 100%; accent-color: var(--green); }
+.shop-price-range .range-label { font-size: .8rem; color: var(--muted); display: flex; justify-content: space-between; }
+
+.shop-clear-btn {
+  width: 100%; margin-top: 1.5rem; padding: .6rem; border-radius: 10px;
+  border: 1.5px solid var(--green); background: none; color: var(--green);
+  font-weight: 700; font-size: .82rem; cursor: pointer; transition: all .2s;
+}
+.shop-clear-btn:hover { background: var(--green); color: #fff; }
+
+/* ═══════════════════════════════════
+   MAIN / FILTER BAR
+═══════════════════════════════════ */
+.shop-main { min-width: 0; }
+.filter-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;
+  background: var(--white); border-radius: 14px; padding: .9rem 1.25rem; box-shadow: var(--shadow);
+}
+.filter-bar .result-count { font-size: .85rem; color: var(--muted); }
+.filter-bar .result-count strong { color: var(--green); }
+.filter-sort select {
+  border: 1.5px solid #d4e8da; border-radius: 10px; padding: .5rem .9rem;
+  font-size: .85rem; color: var(--green); background: var(--white); font-weight: 600; cursor: pointer;
+}
+.filter-mobile-toggle {
+  display: none; background: var(--green); color: #fff; border: none;
+  padding: .5rem 1rem; border-radius: 10px; font-size: .82rem; font-weight: 700; cursor: pointer;
+}
+@media (max-width: 900px) {
+  .filter-mobile-toggle { display: inline-flex; align-items: center; gap: .4rem; }
+}
+
+.shop-product-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+}
+@media (max-width: 1100px) { .shop-product-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px)  { .shop-product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 420px)  { .shop-product-grid { grid-template-columns: 1fr 1fr; gap: .8rem; } }
+
+.shop-empty {
+  text-align: center; padding: 4rem 1rem; color: var(--muted);
+}
+.shop-empty h3 { color: var(--green); margin-bottom: .5rem; font-size: 1.1rem; }
+
+/* Mobile sidebar drawer */
+@media (max-width: 900px) {
+  .shop-sidebar {
+    display: none;
+  }
+  .shop-sidebar.mobile-open {
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ═══════════════════════════════════
+   PRODUCT CARD — Add to Cart / Buy Now
+   (professional rounded-rectangle buttons,
+   overrides the global .btn pill/circle shape)
+═══════════════════════════════════ */
+.pc-actions { display: flex; gap: .55rem; }
+
+.pc-actions .pc-btn {
+  flex: 1;
+  width: auto;
+  height: auto;
+  aspect-ratio: unset;
+  display: inline-flex; align-items: center; justify-content: center; gap: .35rem;
+  padding: .68rem .5rem !important;
+  font-size: .78rem; font-weight: 700;
+  letter-spacing: .01em;
+  border-radius: 10px !important;
+  border: 1.5px solid transparent;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.pc-actions .pc-btn:active:not(:disabled) { transform: scale(.97); }
+.pc-actions .pc-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* Add to Cart — outlined, becomes solid on hover */
+.pc-actions .pc-btn.btn-outline {
+  background: #fff !important;
+  border-color: var(--green, #1B5E20) !important;
+  color: var(--green, #1B5E20) !important;
+  box-shadow: 0 2px 6px rgba(27,94,32,.08);
+}
+.pc-actions .pc-btn.btn-outline:hover:not(:disabled) {
+  background: var(--green, #1B5E20) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 16px rgba(27,94,32,.25);
+}
+
+/* Buy Now — solid gradient, lifts on hover */
+.pc-actions .pc-btn.btn-green {
+  background: linear-gradient(135deg, #1f6d3f, #1B5E20) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(27,94,32,.28);
+}
+.pc-actions .pc-btn.btn-green:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(27,94,32,.4);
+}
+.pc-actions .pc-btn.btn-green:active:not(:disabled) {
+  transform: translateY(0) scale(.97);
+}

@@ -1,0 +1,76 @@
+.cat-slider-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.cat-grid {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: catAutoScroll 28s linear infinite;
+}
+
+.cat-slider-wrap:hover .cat-grid {
+  animation-play-state: paused;
+}
+
+@keyframes catAutoScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.cat-card {
+  background: var(--white);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform .3s, box-shadow .3s;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  flex: 0 0 auto;
+  width: 160px;
+}
+
+.cat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.cat-card-img {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--light);
+}
+
+.cat-card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+}
+
+.cat-card:hover .cat-card-img img {
+  transform: scale(1.08);
+}
+
+.cat-card-body {
+  padding: .7rem .5rem;
+}
+
+.cat-card-body h3 {
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: .2rem;
+}
+
+.cat-count {
+  font-size: .7rem;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .cat-card { width: 130px; }
+  .cat-grid { animation-duration: 20s; }
+}

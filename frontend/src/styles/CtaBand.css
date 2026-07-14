@@ -1,0 +1,26 @@
+.cta-band {
+  background: linear-gradient(135deg, var(--green), var(--green2));
+  border-radius: 24px;
+  padding: 2.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.cta-band h2 {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: .3rem;
+}
+
+.cta-band p {
+  color: rgba(255,255,255,.7);
+  font-size: .9rem;
+}
+
+@media (max-width: 640px) {
+  .cta-band { text-align: center; justify-content: center; }
+}

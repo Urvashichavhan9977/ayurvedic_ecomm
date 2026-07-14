@@ -1,0 +1,56 @@
+
+.fstrip {
+  background: var(--white);
+  border-bottom: 1px solid #e8f0ea;
+}
+
+.fstrip-grid {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 0;
+}
+
+.fstrip-item {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: 1.2rem 1.4rem;
+  border-right: 1px solid #e8f0ea;
+}
+
+.fstrip-item:last-child { border-right: none; }
+
+.fstrip-icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--light);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.fstrip-icon svg {
+  width: 18px; height: 18px;
+  stroke: var(--green);
+}
+
+.fstrip-text strong {
+  display: block;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.fstrip-text span {
+  font-size: .75rem;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .fstrip-grid { flex-direction: column; }
+  .fstrip-item { border-right: none; border-bottom: 1px solid #e8f0ea; }
+  .fstrip-item:last-child { border-bottom: none; }
+}

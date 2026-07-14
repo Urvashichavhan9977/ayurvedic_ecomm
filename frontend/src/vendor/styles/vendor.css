@@ -1,0 +1,385 @@
+/* ═══════════════════════════════════════════════════════════════
+   VENDOR PANEL — self-contained styles.
+   Does not modify or override any existing site/admin CSS class —
+   every rule below is scoped to .vnd- prefixed classes only.
+═══════════════════════════════════════════════════════════════ */
+
+.vnd-root {
+  --vnd-green: #1a3a28;
+  --vnd-green2: #2a5a3e;
+  --vnd-gold: #c9980a;
+  --vnd-cream: #f8f4ed;
+  --vnd-light: #f2f7f4;
+  --vnd-text: #2d3a2e;
+  --vnd-muted: #6b7c6e;
+  --vnd-white: #ffffff;
+  --vnd-border: #e3e8e3;
+  --vnd-radius: 14px;
+  --vnd-shadow: 0 4px 24px rgba(26, 58, 40, 0.1);
+  min-height: 100vh;
+  background: var(--vnd-light);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: var(--vnd-text);
+}
+
+.vnd-root * { box-sizing: border-box; }
+
+/* ─── Auth pages (login / register) ─────────────────────────── */
+.vnd-auth-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, var(--vnd-cream) 0%, var(--vnd-light) 100%);
+}
+
+.vnd-auth-card {
+  width: 100%;
+  max-width: 460px;
+  background: var(--vnd-white);
+  border-radius: var(--vnd-radius);
+  box-shadow: var(--vnd-shadow);
+  padding: 2.25rem 2rem;
+}
+
+.vnd-auth-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: var(--vnd-green);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.vnd-auth-title {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--vnd-green);
+  margin-bottom: 0.25rem;
+}
+
+.vnd-auth-subtitle {
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--vnd-muted);
+  margin-bottom: 1.5rem;
+}
+
+.vnd-form-row { margin-bottom: 1rem; }
+.vnd-form-row label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: var(--vnd-text);
+}
+.vnd-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+@media (max-width: 520px) {
+  .vnd-form-grid { grid-template-columns: 1fr; }
+}
+
+.vnd-input, .vnd-select, .vnd-textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid var(--vnd-border);
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  color: var(--vnd-text);
+  background: var(--vnd-white);
+  transition: border-color 0.2s ease;
+}
+.vnd-input:focus, .vnd-select:focus, .vnd-textarea:focus {
+  outline: none;
+  border-color: var(--vnd-green2);
+}
+.vnd-textarea { resize: vertical; min-height: 80px; }
+
+.vnd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.vnd-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.vnd-btn-primary { background: var(--vnd-green); color: #fff; width: 100%; }
+.vnd-btn-primary:hover:not(:disabled) { background: var(--vnd-green2); }
+.vnd-btn-outline { background: transparent; color: var(--vnd-green); border: 1.5px solid var(--vnd-green); }
+.vnd-btn-outline:hover:not(:disabled) { background: var(--vnd-light); }
+.vnd-btn-danger { background: #c0392b; color: #fff; }
+.vnd-btn-sm { padding: 0.4rem 0.85rem; font-size: 0.8rem; }
+
+.vnd-auth-footer {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--vnd-muted);
+}
+.vnd-auth-footer a { color: var(--vnd-green); font-weight: 700; }
+
+.vnd-alert {
+  padding: 0.65rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+.vnd-alert-error { background: #fdecea; color: #c0392b; }
+.vnd-alert-success { background: #eafaf1; color: #1e8449; }
+.vnd-alert-info { background: #eef6f1; color: var(--vnd-green2); }
+
+/* ─── Dashboard shell ────────────────────────────────────────── */
+.vnd-shell { display: flex; min-height: 100vh; }
+
+.vnd-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  background: var(--vnd-green);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  transition: transform 0.25s ease;
+  z-index: 40;
+}
+
+.vnd-sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1.25rem 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.vnd-sidebar-brand strong { display: block; font-size: 0.95rem; }
+.vnd-sidebar-brand span { font-size: 0.68rem; letter-spacing: 0.08em; opacity: 0.75; }
+.vnd-brand-mark {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: rgba(255,255,255,0.14);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800;
+}
+
+.vnd-nav { flex: 1; overflow-y: auto; padding: 0.75rem 0; }
+.vnd-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 1.1rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-left: 3px solid transparent;
+}
+.vnd-nav-link:hover { background: rgba(255, 255, 255, 0.06); color: #fff; }
+.vnd-nav-link.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-left-color: var(--vnd-gold);
+}
+
+.vnd-sidebar-footer {
+  padding: 1rem 1.1rem;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.vnd-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--vnd-text);
+  cursor: pointer;
+}
+
+.vnd-main { flex: 1; min-width: 0; }
+
+.vnd-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--vnd-white);
+  border-bottom: 1px solid var(--vnd-border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.vnd-topbar h1 { font-size: 1.15rem; font-weight: 800; color: var(--vnd-green); }
+.vnd-topbar-status {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  text-transform: capitalize;
+}
+
+.vnd-content { padding: 1.5rem; max-width: 1200px; }
+
+.vnd-sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 30;
+}
+
+@media (max-width: 900px) {
+  .vnd-hamburger { display: inline-flex; }
+  .vnd-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+  }
+  .vnd-sidebar.open { transform: translateX(0); }
+  .vnd-sidebar-overlay.open { display: block; }
+  .vnd-content { padding: 1rem; }
+}
+
+/* ─── Badges ─────────────────────────────────────────────────── */
+.vnd-badge {
+  display: inline-block;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.vnd-badge-approved, .vnd-badge-delivered { background: #eafaf1; color: #1e8449; }
+.vnd-badge-pending, .vnd-badge-placed { background: #fef6e0; color: #a67c00; }
+.vnd-badge-rejected, .vnd-badge-cancelled { background: #fdecea; color: #c0392b; }
+.vnd-badge-suspended { background: #eee; color: #666; }
+
+/* ─── Stat cards ─────────────────────────────────────────────── */
+.vnd-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.vnd-stat-card {
+  background: var(--vnd-white);
+  border-radius: var(--vnd-radius);
+  box-shadow: var(--vnd-shadow);
+  padding: 1.1rem 1.25rem;
+}
+.vnd-stat-card .vnd-stat-label { font-size: 0.78rem; color: var(--vnd-muted); font-weight: 600; margin-bottom: 0.35rem; }
+.vnd-stat-card .vnd-stat-value { font-size: 1.5rem; font-weight: 800; color: var(--vnd-green); }
+.vnd-stat-card .vnd-stat-sub { font-size: 0.75rem; color: var(--vnd-muted); margin-top: 0.2rem; }
+
+/* ─── Cards / Panels ─────────────────────────────────────────── */
+.vnd-panel {
+  background: var(--vnd-white);
+  border-radius: var(--vnd-radius);
+  box-shadow: var(--vnd-shadow);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.vnd-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.vnd-panel-header h3 { font-size: 1.02rem; font-weight: 800; color: var(--vnd-green); }
+
+/* ─── Table ──────────────────────────────────────────────────── */
+.vnd-table-wrap { overflow-x: auto; }
+.vnd-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+.vnd-table th {
+  text-align: left;
+  padding: 0.7rem 0.75rem;
+  color: var(--vnd-muted);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--vnd-border);
+  white-space: nowrap;
+}
+.vnd-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--vnd-border);
+  vertical-align: middle;
+}
+.vnd-table tr:last-child td { border-bottom: none; }
+.vnd-table-muted { color: var(--vnd-muted); }
+
+.vnd-empty {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--vnd-muted);
+  font-size: 0.9rem;
+}
+
+.vnd-fullscreen-loader {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: #6b7c6e;
+}
+.vnd-spinner {
+  width: 34px; height: 34px;
+  border: 3px solid #d9e3dc;
+  border-top-color: #2a5a3e;
+  border-radius: 50%;
+  animation: vnd-spin 0.8s linear infinite;
+}
+@keyframes vnd-spin { to { transform: rotate(360deg); } }
+
+.vnd-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 60;
+}
+.vnd-modal {
+  background: #fff;
+  border-radius: var(--vnd-radius);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 560px;
+  max-height: 88vh;
+  overflow-y: auto;
+}
+.vnd-modal h3 { color: var(--vnd-green); margin-bottom: 1rem; font-size: 1.05rem; }
+
+.vnd-imgs-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+.vnd-imgs-row img {
+  width: 56px; height: 56px; object-fit: cover; border-radius: 8px; border: 1px solid #e3e8e3;
+}
+.vnd-help-text { font-size: 0.75rem; color: var(--vnd-muted); margin-top: 0.3rem; }

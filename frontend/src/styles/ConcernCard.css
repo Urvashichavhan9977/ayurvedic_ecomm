@@ -1,0 +1,59 @@
+.concern-card {
+  background: var(--white);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform .3s, box-shadow .3s;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+}
+
+.concern-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.concern-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--light);
+}
+
+.concern-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+}
+
+.concern-img-emoji {
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+}
+.concern-img-emoji span { font-size: 2.6rem; line-height: 1; }
+
+.concern-state-msg {
+  text-align: center; color: var(--muted); font-size: .9rem; padding: 1.5rem 0;
+}
+.concern-state-error { color: #c0392b; }
+
+.concern-card:hover .concern-img img {
+  transform: scale(1.07);
+}
+
+.concern-body {
+  padding: .9rem .75rem 1rem;
+}
+
+.concern-body h3 {
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: .2rem;
+}
+
+.concern-body span {
+  font-size: .75rem;
+  color: var(--muted);
+}

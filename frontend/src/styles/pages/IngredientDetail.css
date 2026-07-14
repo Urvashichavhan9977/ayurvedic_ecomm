@@ -1,0 +1,70 @@
+.ingredient-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 3rem 1rem;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .ingredient-detail { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+.ingredient-detail-img-wrap {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #f5f0e8;
+  aspect-ratio: 1/1;
+  box-shadow: var(--shadow);
+}
+.ingredient-detail-img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+.ingredient-detail-img-wrap:hover .ingredient-detail-img { transform: scale(1.04); }
+
+.ingredient-detail-eyebrow {
+  font-size: .75rem; text-transform: uppercase; letter-spacing: .1em;
+  color: var(--gold, #C8972B); font-weight: 700;
+}
+.ingredient-detail-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  color: var(--green, #1B5E20);
+  margin: .35rem 0 .3rem;
+  line-height: 1.15;
+}
+.ingredient-detail-tagline {
+  font-size: 1.05rem;
+  color: var(--muted, #666);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.ingredient-detail-tags {
+  display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.25rem;
+}
+.ingredient-tag {
+  font-size: .8rem; font-weight: 700; color: var(--green, #1B5E20);
+  background: #eaf3ec; padding: .3rem .8rem; border-radius: 20px;
+}
+
+.ingredient-detail-desc {
+  color: #444; line-height: 1.75; margin-bottom: 1.5rem; font-size: .97rem;
+}
+
+.ingredient-detail-benefits { margin-bottom: 1.5rem; }
+.ingredient-detail-benefits h3,
+.ingredient-detail-usage h3 {
+  font-size: 1.05rem; color: var(--green, #1B5E20); margin-bottom: .6rem; font-weight: 800;
+}
+.ingredient-detail-benefits ul {
+  list-style: none; padding: 0; display: flex; flex-direction: column; gap: .5rem;
+}
+.ingredient-detail-benefits li {
+  font-size: .92rem; color: #444; line-height: 1.5;
+}
+
+.ingredient-detail-usage {
+  background: #faf8f3;
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  margin-bottom: .5rem;
+}
+.ingredient-detail-usage p { color: #555; font-size: .9rem; line-height: 1.6; }

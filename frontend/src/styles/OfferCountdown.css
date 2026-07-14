@@ -1,0 +1,83 @@
+.offer-countdown {
+  display: inline-flex;
+  align-items: center;
+  gap: .9rem;
+  margin-top: .9rem;
+  padding: .55rem 1rem;
+  background: linear-gradient(135deg, #fdf6e9, #f9efd9);
+  border: 1px solid #f0dfb0;
+  border-radius: 50px;
+  flex-wrap: wrap;
+}
+
+.offer-countdown-label {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--green);
+  white-space: nowrap;
+}
+
+.offer-countdown-label svg {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.offer-countdown-boxes {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+
+.offer-countdown-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--green);
+  color: #fff;
+  border-radius: 8px;
+  padding: .3rem .5rem;
+  min-width: 40px;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+
+.offer-countdown-num {
+  font-size: .95rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.offer-countdown-unit {
+  font-size: .58rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: rgba(255,255,255,.75);
+  margin-top: .1rem;
+}
+
+.offer-countdown-sep {
+  font-weight: 800;
+  color: var(--gold);
+  font-size: .95rem;
+}
+
+@media (max-width: 480px) {
+  .offer-countdown {
+    gap: .6rem;
+    padding: .5rem .8rem;
+  }
+  .offer-countdown-label {
+    font-size: .72rem;
+  }
+  .offer-countdown-box {
+    min-width: 34px;
+    padding: .25rem .4rem;
+  }
+  .offer-countdown-num {
+    font-size: .85rem;
+  }
+}

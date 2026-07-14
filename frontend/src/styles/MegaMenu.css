@@ -1,0 +1,423 @@
+/* Outer panel — ALWAYS mounted (never unmounted) so open/close can transition smoothly
+   and so the hover zone between the trigger and the panel has no dead gap. */
+.mega-menu-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  /* -50% se panel exact center hota tha jisse chhote/laptop screens par
+     left edge se chipak jaata tha. -30% karne se panel apne trigger ke
+     relative thoda right ki taraf shift ho jaata hai.
+     Value 0% se -50% ke beech adjust kar sakte ho:
+       0%   => bilkul left-aligned (trigger ke left edge se start)
+      -50%  => bilkul center (original) */
+  transform: translateX(-30%);
+  padding-top: 14px;             /* creates a hoverable bridge — no gap where hover breaks */
+  width: max-content;
+  max-width: min(980px, 94vw);  /* never overflows the viewport on smaller laptop screens */
+  z-index: 999;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .18s ease, visibility 0s linear .18s;
+}
+
+.mega-menu-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity .18s ease;
+}
+
+.mega-menu-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(20, 40, 30, .18), 0 4px 14px rgba(20, 40, 30, .08);
+  border: 1px solid rgba(0,0,0,.06);
+  overflow: hidden;
+}
+
+.mega-menu-card::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  /* Arrow ko bhi panel ke naye shift ke hisaab se align kiya —
+     ab ye trigger ke center ke roughly upar rahega, panel ke center ke nahi. */
+  left: 30%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-left: 1px solid rgba(0,0,0,.06);
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
+.mega-menu-inner {
+  position: relative;
+  background: #fff;
+  padding: 2.1rem 1.75rem 2.1rem 2rem;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1.7fr 0.85fr;
+  gap: 2rem;
+  width: max-content;
+  max-width: min(980px, 94vw);
+}
+
+.mega-col-title {
+  font-size: .74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: var(--green);
+  margin-bottom: 1rem;
+  padding-bottom: .65rem;
+  border-bottom: 2px solid #f0ece2;
+  position: relative;
+}
+
+.mega-col-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 28px;
+  height: 2px;
+  background: var(--gold2);
+}
+
+.mega-empty {
+  font-size: .82rem;
+  color: #999;
+}
+
+/* Category list with thumbnails */
+.mega-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.mega-list li a {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .5rem .5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #2b2b2b;
+  font-size: .87rem;
+  font-weight: 600;
+  transition: background .15s, color .15s, transform .15s;
+}
+
+.mega-list li a:hover {
+  background: #f7f5ee;
+  color: var(--green);
+  transform: translateX(2px);
+}
+
+.mega-thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid #eee;
+}
+
+.mega-list li a span {
+  display: flex;
+  flex-direction: column;
+}
+
+.mega-list li a em {
+  font-style: normal;
+  font-size: .71rem;
+  font-weight: 500;
+  color: #9a9a9a;
+}
+
+/* Plain list (concerns) */
+.mega-list-plain li a {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .12rem;
+  padding: .5rem .55rem;
+}
+
+.mega-list-plain li a em {
+  font-size: .71rem;
+  color: #9a9a9a;
+  font-weight: 500;
+}
+
+.mega-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  margin-top: .9rem;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--green);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1.5px solid var(--gold2);
+  transition: color .15s, gap .15s;
+}
+
+.mega-view-all:hover {
+  color: var(--gold);
+  gap: .5rem;
+}
+
+/* Best seller product grid */
+.mega-product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem;
+}
+
+.mega-product-card {
+  text-decoration: none;
+  display: block;
+}
+
+.mega-product-img-wrap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f6f4ee;
+  aspect-ratio: 1 / 1;
+  margin-bottom: .55rem;
+  border: 1px solid #f0ede4;
+}
+
+.mega-product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
+
+.mega-product-card:hover .mega-product-img-wrap img {
+  transform: scale(1.08);
+}
+
+.mega-product-card:hover .mega-product-img-wrap {
+  border-color: var(--gold2);
+}
+
+.mega-badge {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  font-size: .6rem;
+  font-weight: 800;
+  padding: .22rem .5rem;
+  border-radius: 5px;
+  color: #fff;
+  letter-spacing: .02em;
+}
+
+.mega-badge-red  { background: #d64545; }
+.mega-badge-gold { background: var(--gold2); }
+
+.mega-product-name {
+  font-size: .8rem;
+  font-weight: 700;
+  color: #2b2b2b;
+  line-height: 1.3;
+  margin-bottom: .25rem;
+}
+
+.mega-product-price {
+  font-size: .84rem;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.mega-product-price span {
+  font-weight: 500;
+  color: #b5b5b5;
+  text-decoration: line-through;
+  margin-left: .4rem;
+  font-size: .74rem;
+}
+
+/* Promo banner column */
+.mega-promo {
+  background: linear-gradient(160deg, var(--green), var(--green2));
+  border-radius: 14px;
+  padding: 1.5rem 1.25rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mega-promo::after {
+  content: '';
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.06);
+  top: -50px;
+  right: -50px;
+}
+
+.mega-promo-eyebrow {
+  font-size: .66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--gold2);
+  margin-bottom: .55rem;
+}
+
+.mega-promo h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: .45rem;
+  line-height: 1.28;
+}
+
+.mega-promo p {
+  font-size: .82rem;
+  color: rgba(255,255,255,.82);
+  margin-bottom: 1.2rem;
+}
+
+.mega-promo-btn {
+  align-self: flex-start;
+  background: var(--gold2);
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 700;
+  padding: .6rem 1.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background .2s, transform .15s;
+  position: relative;
+  z-index: 1;
+}
+
+.mega-promo-btn:hover {
+  background: var(--gold);
+  transform: translateY(-1px);
+}
+
+/* ---------- Responsive breakpoints ---------- */
+
+/* Laptops / small desktops */
+@media (max-width: 1180px) {
+  .mega-menu-inner {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "cat concern"
+      "best best"
+      "promo promo";
+  }
+  .mega-col:nth-child(1) { grid-area: cat; }
+  .mega-col:nth-child(2) { grid-area: concern; }
+  .mega-col-wide { grid-area: best; }
+  .mega-promo { grid-area: promo; }
+
+  .mega-menu-panel {
+    /* Laptop pe thoda kam shift, taaki panel right side se viewport ke bahar na nikle */
+    transform: translateX(-15%);
+  }
+
+  .mega-menu-card::before {
+    left: 15%;
+  }
+}
+
+/* Tablets and mobile — becomes an animated slide-down accordion,
+   living inline inside the dark mobile nav (no more absolute overlay). */
+@media (max-width: 900px) {
+  .mega-menu-panel {
+    position: static;
+    left: auto;
+    transform: none;
+    padding-top: 0;
+    width: auto;
+    max-width: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: none;
+
+    /* Slide-down/up animation using the grid-rows trick (no fixed height needed) */
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .28s ease;
+    margin: 0;
+  }
+
+  .mega-menu-panel.is-open {
+    grid-template-rows: 1fr;
+    margin: .6rem 0;
+  }
+
+  .mega-menu-card {
+    min-height: 0;
+    overflow: hidden;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.18);
+  }
+
+  .mega-menu-card::before {
+    display: none;
+  }
+
+  .mega-menu-inner {
+    width: auto;
+    max-width: none;
+    background: #fff;
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+    padding: 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .mega-col-title { color: var(--green); }
+
+  .mega-list li a,
+  .mega-list-plain li a {
+    color: #2b2b2b;
+  }
+
+  .mega-list li a:hover {
+    background: #f7f5ee;
+  }
+
+  .mega-list li a em,
+  .mega-list-plain li a em {
+    color: #9a9a9a;
+  }
+
+  .mega-product-name,
+  .mega-product-price {
+    color: #2b2b2b;
+  }
+
+  .mega-product-price { color: var(--green); }
+
+  .mega-view-all { color: var(--green); border-color: var(--gold2); }
+}
+
+@media (max-width: 480px) {
+  .mega-product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: .8rem;
+  }
+  .mega-menu-inner {
+    padding: 1rem;
+    gap: 1.25rem;
+  }
+}

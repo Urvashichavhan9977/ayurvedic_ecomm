@@ -1,0 +1,38 @@
+.profile-page { padding: 2rem 0 4rem; }
+.profile-tabs {
+  display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 2rem;
+  border-bottom: 1px solid #e8f0ea; padding-bottom: .5rem;
+}
+.profile-tabs button {
+  background: none; border: none; padding: .55rem 1.1rem; border-radius: 10px 10px 0 0;
+  font-size: .85rem; font-weight: 700; color: var(--muted); cursor: pointer; transition: all .2s;
+}
+.profile-tabs button.active { color: var(--green); background: var(--light); }
+.profile-tabs .logout-btn { margin-left: auto; color: #e63946; }
+
+.profile-content { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2rem; }
+.profile-content h2 { color: var(--green); font-size: 1.2rem; font-weight: 800; margin-bottom: 1.25rem; }
+
+.dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 1.5rem; }
+@media (max-width: 700px) { .dashboard-grid { grid-template-columns: 1fr; } }
+.dash-stat { background: var(--light); border-radius: 14px; padding: 1.25rem; text-align: center; }
+.dash-stat .num { font-size: 1.6rem; font-weight: 800; color: var(--green); display: block; }
+.dash-stat .label { font-size: .8rem; color: var(--muted); }
+
+.profile-empty { text-align: center; padding: 3rem 1rem; color: var(--muted); }
+
+.wishlist-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+@media (max-width: 900px) { .wishlist-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .wishlist-grid { grid-template-columns: 1fr; } }
+
+.address-card {
+  border: 1.5px solid #e8f0ea; border-radius: 14px; padding: 1.25rem; margin-bottom: 1rem;
+}
+.address-card strong { color: var(--green); display: block; margin-bottom: .3rem; }
+.address-card p { color: var(--muted); font-size: .85rem; line-height: 1.5; }
+
+.profile-form .field { max-width: 420px; margin-bottom: 1.1rem; }
+.profile-form .field label { display: block; font-size: .8rem; font-weight: 700; color: var(--green); margin-bottom: .4rem; }
+.profile-form .field input {
+  width: 100%; padding: .65rem .9rem; border: 1.5px solid #d4e8da; border-radius: 10px; font-size: .88rem; font-family: inherit;
+}

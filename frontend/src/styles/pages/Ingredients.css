@@ -1,0 +1,167 @@
+/* ===== Ingredients Hero ===== */
+.ingredients-hero {
+  background: linear-gradient(135deg, #0d2118 0%, #1a3a28 60%, #112a1c 100%);
+  padding: 4rem 0 3rem;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.ingredients-hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* floating herb/leaf wrapper */
+.ingredients-hero .hero-leaf {
+  position: absolute;
+  color: rgba(167, 224, 179, 0.35);
+  z-index: 1;
+  pointer-events: none;
+  filter: blur(0.3px);
+}
+
+.ingredients-hero .leaf-1 {
+  top: 10%; left: 6%;
+  animation: floatDrift 7s ease-in-out infinite;
+}
+.ingredients-hero .leaf-2 {
+  top: 65%; left: 12%;
+  animation: floatDrift 9s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+.ingredients-hero .leaf-3 {
+  top: 20%; right: 8%;
+  animation: floatDrift 8s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+.ingredients-hero .leaf-4 {
+  top: 70%; right: 14%;
+  animation: floatDrift 10s ease-in-out infinite;
+  animation-delay: 2s;
+}
+.ingredients-hero .leaf-5 {
+  top: 40%; left: 45%;
+  animation: floatDrift 11s ease-in-out infinite;
+  animation-delay: 3s;
+  opacity: 0.5;
+}
+
+@keyframes floatDrift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(8px, -14px) rotate(8deg); }
+  50%  { transform: translate(-6px, -6px) rotate(-6deg); }
+  75%  { transform: translate(10px, 6px) rotate(5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.ingredients-hero .eyebrow { color: var(--gold2); }
+.ingredients-hero h1 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  color: #fff;
+  font-weight: 800;
+  margin: .5rem 0 .75rem;
+}
+.ingredients-hero h1 em { color: var(--gold2); font-style: normal; }
+.ingredients-hero p {
+  color: rgba(255, 255, 255, .72);
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+/* ===== Ingredients Grid ===== */
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  align-items: stretch; /* ensures every card in a row matches the tallest one */
+}
+
+@media (max-width: 992px) {
+  .ingredients-grid { grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+}
+@media (max-width: 768px) {
+  .ingredients-grid { grid-template-columns: repeat(2, 1fr); gap: .9rem; }
+}
+@media (max-width: 480px) {
+  .ingredients-grid { grid-template-columns: 1fr; gap: .75rem; }
+}
+
+/* ===== Ingredient Card ===== */
+.ingredient-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;                 /* fill the stretched grid cell */
+  text-decoration: none;
+  color: inherit;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform .3s, box-shadow .3s;
+}
+.ingredient-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.ingredient-card-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--light);
+  flex-shrink: 0;                /* image never shrinks/grows */
+}
+.ingredient-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+}
+.ingredient-card:hover .ingredient-card-img img {
+  transform: scale(1.07);
+}
+
+.ingredient-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;                       /* body fills remaining card height */
+  padding: 1.1rem;
+}
+
+.ingredient-card-body h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--green);
+  margin-bottom: .35rem;
+}
+
+.ingredient-card-body .benefits {
+  font-size: .8rem;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+
+.ingredient-card-body p {
+  font-size: .83rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-bottom: .8rem;
+  flex: 1;                       /* description grows/shrinks, pushing button down */
+
+  /* keep description length visually consistent across cards */
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ingredient-card-body .btn {
+  margin-top: auto;              /* button always sticks to the bottom */
+  align-self: flex-start;
+  width: 100%;
+  text-align: center;
+}

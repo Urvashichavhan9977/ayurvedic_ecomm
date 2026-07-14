@@ -1,0 +1,29 @@
+.pills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  justify-content: center;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .55rem 1.25rem;
+  border-radius: 50px;
+  background: var(--white);
+  border: 1.5px solid #c8e0d0;
+  color: var(--green);
+  font-size: .85rem;
+  font-weight: 600;
+  transition: all .2s;
+  box-shadow: 0 2px 8px rgba(26,58,40,.06);
+  text-decoration: none;
+}
+
+.pill:hover {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+  transform: translateY(-2px);
+}

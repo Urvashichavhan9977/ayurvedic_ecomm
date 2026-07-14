@@ -1,0 +1,232 @@
+/* ═══════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:  #1a3a28;
+  --green2: #2a5a3e;
+  --gold:   #c9980a;
+  --gold2:  #e6b422;
+  --cream:  #f8f4ed;
+  --light:  #f2f7f4;
+  --text:   #2d3a2e;
+  --muted:  #6b7c6e;
+  --white:  #ffffff;
+  --radius: 16px;
+  --shadow: 0 4px 24px rgba(26,58,40,.10);
+  --shadow-lg: 0 12px 40px rgba(26,58,40,.16);
+}
+
+/* ═══════════════════════════════════
+   DARK THEME
+   Set globally by the admin (Settings → Theme). ThemeContext writes
+   data-theme="dark" on <html> for every visitor when the admin picks
+   Dark Mode — see src/context/ThemeContext.jsx. Everything below just
+   re-points the same tokens used throughout the site, so any component
+   already built on var(--green)/var(--white)/etc. adapts automatically.
+═══════════════════════════════════ */
+html[data-theme="dark"] {
+  --green:  #3fae6b;
+  --green2: #4fce87;
+  --gold:   #e6b422;
+  --gold2:  #f0c94a;
+  --cream:  #1a221d;
+  --light:  #202b24;
+  --text:   #edf2ee;
+  --muted:  #8ea091;
+  --white:  #1a221d;
+  --border: #2c362f;
+  --shadow: 0 4px 24px rgba(0,0,0,.4);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.55);
+}
+html[data-theme="dark"] body { background: #101512; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+  transition: background-color .25s ease, color .25s ease;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ═══════════════════════════════════
+   LAYOUT HELPERS
+═══════════════════════════════════ */
+.container { max-width: 1240px; margin: 0 auto; padding: 0 1.25rem; }
+.section    { padding: 4rem 0; }
+.section-sm { padding: 2rem 0; }
+.bg-light   { background: var(--light); }
+.bg-green   { background: var(--green); }
+
+/* Section header */
+.sec-head { text-align: center; margin-bottom: 2.5rem; }
+.sec-head .eyebrow {
+  display: inline-block; font-size: .7rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .12em;
+  color: var(--gold); margin-bottom: .4rem;
+}
+.sec-head h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800;
+  color: var(--green); line-height: 1.2; margin-bottom: .5rem;
+}
+.sec-head p { color: var(--muted); font-size: .93rem; max-width: 520px; margin: 0 auto; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  padding: .65rem 1.6rem; border-radius: 50px; font-size: .88rem; font-weight: 700;
+  cursor: pointer; border: none; transition: all .25s; position: relative; overflow: hidden;
+}
+.btn-gold   { background: linear-gradient(135deg, var(--gold2), var(--gold)); color: #fff; }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,152,10,.4); }
+.btn-green  { background: var(--green); color: #fff; }
+.btn-green:hover { background: var(--green2); transform: translateY(-2px); }
+.btn-outline { border: 2px solid var(--green); color: var(--green); background: transparent; }
+.btn-outline:hover { background: var(--green); color: #fff; }
+.btn-outline-w { border: 2px solid rgba(255,255,255,.7); color: #fff; background: transparent; }
+.btn-outline-w:hover { background: rgba(255,255,255,.15); }
+
+/* Eyebrow */
+.eyebrow {
+  display: inline-block; font-size: .7rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .12em; color: var(--gold);
+}
+
+/* ═══════════════════════════════════
+   PRODUCT CARDS
+═══════════════════════════════════ */
+.prod-card {
+  background: var(--white); border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow); transition: transform .3s, box-shadow .3s;
+  position: relative; display: flex; flex-direction: column;
+}
+.prod-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+.prod-badge {
+  position: absolute; top: 10px; left: 10px; z-index: 3;
+  font-size: .68rem; font-weight: 800; padding: .25em .65em;
+  border-radius: 20px; text-transform: uppercase; letter-spacing: .04em;
+}
+.badge-red  { background: #e63946; color: #fff; }
+.badge-gold { background: var(--gold); color: #fff; }
+.badge-green { background: var(--green); color: #fff; }
+
+.prod-wish {
+  position: absolute; top: 8px; right: 8px; z-index: 3;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(255,255,255,.92); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem; box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  transition: background .2s;
+}
+.prod-wish:hover { background: #fee2e2; }
+
+.prod-img-box {
+  width: 100%; aspect-ratio: 1; overflow: hidden;
+  background: var(--light); flex-shrink: 0;
+}
+.prod-img-box img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .4s;
+}
+.prod-card:hover .prod-img-box img { transform: scale(1.06); }
+
+.prod-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; }
+.prod-name { font-size: .88rem; font-weight: 700; color: var(--green); margin-bottom: .3rem; line-height: 1.3; }
+.prod-rating { color: #e6a817; font-size: .78rem; margin-bottom: .5rem; }
+.prod-rating span { color: var(--muted); }
+
+.prod-price-row { display: flex; align-items: center; gap: .5rem; margin-bottom: .8rem; }
+.prod-price { font-size: 1rem; font-weight: 800; color: var(--green); }
+.prod-old   { font-size: .8rem; color: #aaa; text-decoration: line-through; }
+
+.prod-actions { display: flex; gap: .4rem; margin-top: auto; }
+.btn-cart {
+  flex: 1; padding: .55rem .75rem; border-radius: 10px;
+  background: var(--green); color: #fff; border: none;
+  font-size: .8rem; font-weight: 700; cursor: pointer;
+  transition: background .2s, transform .15s;
+}
+.btn-cart:hover  { background: var(--green2); }
+.btn-cart:active { transform: scale(.96); }
+.btn-quick {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--light); color: var(--green); border: 1px solid #d4e8da;
+  font-size: .85rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.btn-quick:hover { background: #d4e8da; }
+
+/* ═══════════════════════════════════
+   UTILITIES
+═══════════════════════════════════ */
+.mt-2 { margin-top: 2rem; }
+.mt-3 { margin-top: 2.5rem; }
+.tc   { text-align: center; }
+
+/* Ripple */
+@keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+.ripple-span {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,.3);
+  transform: scale(0); animation: rippleAnim .6s linear;
+  pointer-events: none;
+}
+
+/* Swiper custom styles */
+.prod-swiper .swiper-button-prev,
+.prod-swiper .swiper-button-next {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--white); box-shadow: 0 2px 12px rgba(0,0,0,.12);
+  color: var(--green) !important;
+}
+.prod-swiper .swiper-button-prev::after,
+.prod-swiper .swiper-button-next::after { font-size: .85rem !important; font-weight: 900 !important; }
+.prod-swiper .swiper-pagination-bullet-active { background: var(--green); }
+.prod-swiper { padding-bottom: 2.5rem !important; }
+/* Product name as a link (when card links to a detail page) */
+.prod-name-link {
+  display: block;
+  text-decoration: none;
+}
+.prod-name-link:hover { color: var(--green2); }
+
+/* ═══════════════════════════════════
+   RESPONSIVE POLISH — TABLET / MOBILE / SMALL MOBILE
+   Applies across every page that uses the shared .container/.section/
+   .btn/.prod-card/.sec-head utilities, so spacing and sizing stay
+   consistent everywhere instead of being patched page-by-page.
+═══════════════════════════════════ */
+@media (max-width: 1024px) {
+  .container { padding: 0 1.1rem; }
+  .section { padding: 3.25rem 0; }
+}
+
+@media (max-width: 768px) {
+  .section { padding: 2.75rem 0; }
+  .section-sm { padding: 1.5rem 0; }
+  .sec-head { margin-bottom: 1.75rem; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 1rem; }
+  .section { padding: 2.25rem 0; }
+  .sec-head { margin-bottom: 1.4rem; }
+  .sec-head p { font-size: .87rem; }
+  .btn { padding: .6rem 1.3rem; font-size: .84rem; }
+}
+
+@media (max-width: 360px) {
+  .container { padding: 0 .8rem; }
+  .prod-body { padding: .8rem; }
+}
+
+/* Prevents any stray wide element (tables, hero media, embeds) from
+   forcing horizontal scroll on narrow viewports. */
+html, body, #root { max-width: 100%; overflow-x: hidden; }
+img, video, svg, iframe { max-width: 100%; height: auto; }
